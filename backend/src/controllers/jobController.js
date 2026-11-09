@@ -115,17 +115,21 @@ const applyToJob = asyncHandler(async (req, res) => {
     throw ApiError.badRequest('This job posting has expired.');
   }
 
-  // 2. Duplicate pre-check (the unique index is the second line of defence).
+  // 2. Résumé must be attached (check BEFORE the duplicate lookup - a request
+  //    without a file is incomplete no matter what).
+  if (!req.file) throw ApiError.badRequest('Please attach your résumé (PDF or DOCX).');
+
+  // 3. Duplicate pre-check (the unique index is the second line of defence).
   const duplicate = await Application.findOne({ job: job._id, email: email.toLowerCase() });
   if (duplicate) {
     throw ApiError.conflict('You have already applied to this job with this email address.');
   }
 
-  // 3. File must exist and pass the magic-byte check (catches renamed fakes).
-  if (!req.file) throw ApiError.badRequest('Please attach your résumé (PDF or DOCX).');
+  // 4. Magic-byte check - the file must really be what its extension claims
+  //    (catches renamed .exe -> .pdf fakes).
   await validateFileSignature(req.file.path);
 
-  // 4. Parse multipart-only fields: skills is a comma-separated string,
+  // 5. Parse multipart-only fields: skills is a comma-separated string,
   //    education is a JSON-encoded array (FormData has no nested objects).
   let skillsList = [];
   if (skills) {
@@ -154,7 +158,7 @@ const applyToJob = asyncHandler(async (req, res) => {
     }
   }
 
-  // 5. Create. If ANYTHING above failed after the file was saved, the
+  // 6. Create. If ANYTHING above failed after the file was saved, the
   //    router-level cleanup middleware deleted the orphaned upload.
   const application = await Application.create({
     job: job._id,

@@ -7,6 +7,7 @@ const { removeFileQuietly } = require('../utils/fileSignature');
 const { validate } = require('../middleware/validate');
 const { applyLimiter } = require('../middleware/rateLimiters');
 const { uploadResume } = require('../middleware/upload');
+const normalizeBody = require('../middleware/normalizeBody');
 const { listJobs, getJob, applyToJob } = require('../controllers/jobController');
 
 const router = express.Router();
@@ -44,6 +45,7 @@ router.post(
   applyLimiter,
   validate([param('id').isMongoId().withMessage('Invalid job id.')]),
   uploadResume.single('resume'),
+  normalizeBody, // multer 2 bodies are null-prototype; rebuild before validation
   validate([
     body('name').trim().isLength({ min: 2, max: 120 }).withMessage('Name must be 2-120 characters.'),
     body('email').trim().isEmail().withMessage('Please provide a valid email address.').normalizeEmail(),

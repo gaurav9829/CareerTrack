@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const env = require('./config/env');
 const { generalLimiter } = require('./middleware/rateLimiters');
 const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
+const normalizeBody = require('./middleware/normalizeBody');
 const publicRoutes = require('./routes/publicRoutes');
 const authRoutes = require('./routes/authRoutes');
 const adminJobRoutes = require('./routes/adminJobRoutes');
@@ -32,6 +33,11 @@ app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 app.use(cookieParser());
 app.use(mongoSanitize());
+
+// mongoSanitize strips $/.-prefixed keys but leaves null-prototype objects
+// behind, which crash express-validator's string sanitizers. Rebuild the body
+// as plain JSON-safe objects (the 100kb cap keeps this cheap).
+app.use(normalizeBody);
 
 // Uploads are NEVER served statically - résumé files live outside express.static
 // and are streamed only through the protected admin route.
