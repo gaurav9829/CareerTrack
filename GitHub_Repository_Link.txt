@@ -1,0 +1,10 @@
+CareerTrack — Repository Link
+================================
+
+GitHub repository URL (paste after creating the repo and pushing):
+
+    https://github.com/<your-username>/careertrack.git
+
+Quick push:
+    git remote add origin https://github.com/<your-username>/careertrack.git
+    git push -u origin main

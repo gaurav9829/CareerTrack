@@ -1,0 +1,16 @@
+CareerTrack — Deployment Links
+===============================
+
+Fill these in after deploying (see docs/DEPLOYMENT.md):
+
+Frontend (Vercel):
+    https://<your-app>.vercel.app
+
+Backend (Render):
+    https://<your-backend>.onrender.com
+
+Health check:
+    https://<your-backend>.onrender.com/api/health
+
+Deployed demo admin credentials: shared privately with the evaluator
+(NEVER store them in this repository).
