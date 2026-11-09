@@ -10,6 +10,9 @@ const env = require('./config/env');
 const { generalLimiter } = require('./middleware/rateLimiters');
 const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
 const publicRoutes = require('./routes/publicRoutes');
+const authRoutes = require('./routes/authRoutes');
+const adminJobRoutes = require('./routes/adminJobRoutes');
+const adminApplicationRoutes = require('./routes/adminApplicationRoutes');
 
 const app = express();
 
@@ -33,6 +36,9 @@ app.use(mongoSanitize());
 // Uploads are NEVER served statically - résumé files live outside express.static
 // and are streamed only through the protected admin route.
 app.use('/api', publicRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminJobRoutes);
+app.use('/api/admin', adminApplicationRoutes);
 
 // 404 for unknown routes, then the single error mapper.
 app.use(notFoundHandler);
