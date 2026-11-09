@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Environment files (NEVER commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Uploaded résumés (user files stay out of git, keep the folder via .gitkeep)
+backend/uploads/**
+!backend/uploads/resumes
+backend/uploads/resumes/*
+!backend/uploads/resumes/.gitkeep
+
+# Build output
+frontend/dist/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Legacy pre-project scaffolds (left on disk, outside the repo)
+client/
+server/
