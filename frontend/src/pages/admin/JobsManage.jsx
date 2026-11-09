@@ -10,6 +10,7 @@ import { ConfirmModal } from '../../components/Modal'
 import { useToast } from '../../context/ToastContext'
 import { JOB_STATUS } from '../../utils/constants'
 import { formatDate, getErrorMessage } from '../../utils/format'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const STATUS_BADGES = {
   published: 'bg-green-50 text-green-700 border-green-200',
@@ -20,6 +21,7 @@ const STATUS_BADGES = {
 // Job management table: search, status filter, pagination and all status
 // actions. Destructive actions go through ConfirmModal.
 export default function JobsManage() {
+  usePageTitle('Manage jobs')
   const toast = useToast()
   const [searchParams, setSearchParams] = useSearchParams()
   const q = searchParams.get('q') || ''
@@ -33,6 +35,9 @@ export default function JobsManage() {
   // confirm state: which job + which action
   const [confirm, setConfirm] = useState(null) // { job, action: 'delete' | 'unpublish' | 'close' }
   const [busy, setBusy] = useState(false)
+
+  // Back/forward navigation: re-sync the visible search input from the URL.
+  useEffect(() => setQInput(q), [q])
 
   useEffect(() => {
     const timer = setTimeout(() => {

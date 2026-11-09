@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import PublicLayout from './layouts/PublicLayout'
 import AdminLayout from './layouts/AdminLayout'
+import ScrollToTop from './components/ScrollToTop'
 import JobList from './pages/public/JobList'
 import JobDetail from './pages/public/JobDetail'
 import ApplyForm from './pages/public/ApplyForm'
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="jobs/:id/edit" element={<JobForm />} />
         <Route path="applications" element={<ApplicationsManage />} />
         <Route path="applications/:id" element={<ApplicationDetail />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

@@ -4,7 +4,7 @@ import { fetchJob } from '../../api/publicApi'
 import Card from '../../components/Card'
 import Spinner from '../../components/Spinner'
 import ErrorState from '../../components/ErrorState'
-import Button from '../../components/Button'
+import usePageTitle from '../../hooks/usePageTitle'
 import { formatDate, formatSalary, getErrorMessage } from '../../utils/format'
 
 // Public job detail. The API only returns ACTIVE jobs, so a 404 here means
@@ -13,6 +13,8 @@ export default function JobDetail() {
   const { id } = useParams()
   const [state, setState] = useState({ loading: true, error: null, job: null })
   const [reloadKey, setReloadKey] = useState(0)
+
+  usePageTitle(state.job ? `${state.job.title} at ${state.job.company}` : 'Job details')
 
   useEffect(() => {
     let alive = true
@@ -132,13 +134,12 @@ export default function JobDetail() {
         )}
 
         <div className="mt-8 border-t border-slate-100 pt-6">
-          <Button
-            type="button"
-            onClick={() => (window.location.href = `/jobs/${job._id}/apply`)}
-            className="w-full sm:w-auto"
+          <Link
+            to={`/jobs/${job._id}/apply`}
+            className="inline-flex w-full items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-700 sm:w-auto"
           >
             Apply for this job →
-          </Button>
+          </Link>
           <p className="mt-2 text-xs text-slate-500">
             You will need your résumé as PDF or DOCX (max 4 MB). No account required.
           </p>

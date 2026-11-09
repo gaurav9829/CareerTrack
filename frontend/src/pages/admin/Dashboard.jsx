@@ -4,11 +4,13 @@ import { fetchStats } from '../../api/adminApi'
 import Card from '../../components/Card'
 import Spinner from '../../components/Spinner'
 import ErrorState from '../../components/ErrorState'
+import usePageTitle from '../../hooks/usePageTitle'
 import { APPLICATION_STATUS } from '../../utils/constants'
 import { getErrorMessage } from '../../utils/format'
 
 // Dashboard: headline stat cards + applications broken down by status.
 export default function Dashboard() {
+  usePageTitle('Dashboard')
   const [state, setState] = useState({ loading: true, error: null, stats: null })
   const [reloadKey, setReloadKey] = useState(0)
 

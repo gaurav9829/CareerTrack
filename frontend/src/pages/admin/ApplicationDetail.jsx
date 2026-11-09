@@ -14,11 +14,13 @@ import ErrorState from '../../components/ErrorState'
 import { useToast } from '../../context/ToastContext'
 import { APPLICATION_STATUS } from '../../utils/constants'
 import { formatDate, formatDateTime, statusBadgeClass, getErrorMessage } from '../../utils/format'
+import usePageTitle from '../../hooks/usePageTitle'
 
 // Single application: candidate details, résumé download, status control, notes.
 export default function ApplicationDetail() {
   const { id } = useParams()
   const toast = useToast()
+  usePageTitle('Review application')
 
   const [state, setState] = useState({ loading: true, error: null, app: null })
   const [reloadKey, setReloadKey] = useState(0)

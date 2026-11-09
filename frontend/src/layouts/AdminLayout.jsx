@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
+import ScrollToTop from '../components/ScrollToTop'
 import { getErrorMessage } from '../utils/format'
 
 // Shell for all /admin pages: sidebar navigation (top bar on mobile) + logout.
@@ -26,6 +27,7 @@ export default function AdminLayout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-100 lg:flex-row">
+      <ScrollToTop />
       {/* Sidebar */}
       <aside className="bg-slate-900 lg:w-60 lg:shrink-0">
         <div className="flex items-center justify-between px-4 py-4 lg:block">

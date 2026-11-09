@@ -8,10 +8,12 @@ import ErrorState from '../../components/ErrorState'
 import Pagination from '../../components/Pagination'
 import { APPLICATION_STATUS } from '../../utils/constants'
 import { formatDate, statusBadgeClass, getErrorMessage } from '../../utils/format'
+import usePageTitle from '../../hooks/usePageTitle'
 import Badge from '../../components/Badge'
 
 // Applications table: filter by job/status/date range, search, CSV export.
 export default function ApplicationsManage() {
+  usePageTitle('Applications')
   const [searchParams, setSearchParams] = useSearchParams()
   const job = searchParams.get('job') || ''
   const status = searchParams.get('status') || ''

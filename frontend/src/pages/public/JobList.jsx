@@ -9,10 +9,12 @@ import ErrorState from '../../components/ErrorState'
 import Pagination from '../../components/Pagination'
 import { getErrorMessage } from '../../utils/format'
 import { EMPLOYMENT_TYPES, EXPERIENCE_LEVELS, SORT_OPTIONS } from '../../utils/constants'
+import usePageTitle from '../../hooks/usePageTitle'
 
 // Public job listing. All filter/sort/page state lives in the URL query string
 // so refresh and browser-back keep working. Text inputs are debounced.
 export default function JobList() {
+  usePageTitle('Find jobs')
   const [searchParams, setSearchParams] = useSearchParams()
   const q = searchParams.get('q') || ''
   const location = searchParams.get('location') || ''
@@ -46,6 +48,10 @@ export default function JobList() {
 
   const [state, setState] = useState({ loading: true, error: null, jobs: [], pagination: null })
   const [reloadKey, setReloadKey] = useState(0)
+
+  // Back/forward navigation: re-sync the visible inputs from the URL.
+  useEffect(() => setQInput(q), [q])
+  useEffect(() => setLocationInput(location), [location])
 
   useEffect(() => {
     let alive = true
