@@ -53,6 +53,16 @@ describe('GET /api/jobs', () => {
     expect(byLocation.body.data.map((j) => j.title)).toContain('React Developer');
   });
 
+  test('TC-J02b: search never leaks expired jobs (search $or must not overwrite the deadline $or)', async () => {
+    const res = await request(app).get('/api/jobs?q=expired');
+    expect(res.status).toBe(200);
+    expect(res.body.data.map((j) => j.title)).not.toContain('Expired Job');
+    expect(res.body.pagination.total).toBe(0);
+
+    const byCompany = await request(app).get('/api/jobs?q=oldcorp');
+    expect(byCompany.body.pagination.total).toBe(0);
+  });
+
   test('TC-J03: filters by employment type and experience level', async () => {
     await createJob({ title: 'Intern Role', employmentType: 'Internship', experienceLevel: 'Fresher', status: 'published' });
     await createJob({ title: 'Lead Role', employmentType: 'Full-time', experienceLevel: 'Lead', status: 'published' });

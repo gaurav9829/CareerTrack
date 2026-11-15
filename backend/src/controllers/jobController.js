@@ -66,10 +66,14 @@ async function fetchPublicJobs(filter, { sort, page, limit }) {
 const listJobs = asyncHandler(async (req, res) => {
   const parsed = readListQuery(req.query);
 
+  // Combine the active-job filter with the text search safely: two $or keys
+  // cannot coexist in one query object (the later one would overwrite the
+  // deadline $or and leak expired jobs into search results), so the search
+  // $or goes into an $and condition instead.
   const filter = activeJobFilter(); // published AND (no deadline OR deadline in future)
   if (parsed.q) {
     const rx = new RegExp(escapeRegex(parsed.q), 'i');
-    filter.$or = [{ title: rx }, { company: rx }, { location: rx }];
+    filter.$and = [{ $or: [{ title: rx }, { company: rx }, { location: rx }] }];
   }
   if (parsed.location) filter.location = new RegExp(escapeRegex(parsed.location), 'i');
   if (parsed.company) filter.company = new RegExp(escapeRegex(parsed.company), 'i');
