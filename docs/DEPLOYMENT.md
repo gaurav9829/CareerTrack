@@ -37,7 +37,7 @@ git push -u origin main
 | JWT_EXPIRES_IN | `1d` |
 | COOKIE_NAME | `careertrack_token` |
 | COOKIE_SAMESITE | `lax` (works because the frontend proxies same-origin) |
-| CLIENT_ORIGIN | your Vercel URL, e.g. `https://careertrack.vercel.app` |
+| CLIENT_ORIGIN | your Vercel URL, e.g. `https://careertrack-drab.vercel.app` |
 | MAX_RESUME_MB | `4` |
 | UPLOAD_DIR | `uploads/resumes` |
 | ADMIN_NAME / ADMIN_EMAIL / ADMIN_PASSWORD | your private admin credentials (never commit these) |
@@ -56,9 +56,13 @@ git push -u origin main
 
 1. Import the repo → **Framework preset: Vite**, **Root directory: `frontend`**.
 2. Environment variable: `VITE_API_BASE_URL=/api` (the default; can be skipped).
-3. Edit `frontend/vercel.json`: replace `REPLACE-WITH-YOUR-BACKEND` with your real
-   Render URL (e.g. `https://careertrack-api.onrender.com`), commit, push. Vercel redeploys.
+3. Edit `frontend/vercel.json`: replace the backend placeholder with your real
+   Render URL (already done in this repo: `https://careertrack-wd4z.onrender.com`),
+   commit, push. Vercel redeploys.
 4. SPA fallback (`/(.*)` → `/index.html`) and the `/api/*` rewrite are already in place.
+
+> Deployed URLs for this project are recorded in `Deployment_Links.txt`:
+> frontend `https://careertrack-drab.vercel.app`, backend `https://careertrack-wd4z.onrender.com`.
 
 ## 4. Production checklist
 

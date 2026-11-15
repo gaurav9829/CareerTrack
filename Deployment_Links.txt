@@ -2,19 +2,29 @@ CareerTrack – Deployment Links
 ===============================
 
 Frontend (Vercel) – LIVE:
-    https://careertrack.vercel.app
+    https://careertrack-drab.vercel.app
 
-Backend (Render):
-    [pending – create Web Service, then paste URL here]
+Backend (Render) – LIVE:
+    https://careertrack-wd4z.onrender.com
 
-Backend health check:
-    [pending] /api/health
+Backend health check (also confirms DB connection):
+    https://careertrack-wd4z.onrender.com/api/health
 
-Frontend repository:
-    https://github.com/gaurav9829/CareerTrack
+Public job listing API (through the frontend proxy):
+    https://careertrack-drab.vercel.app/api/jobs
 
 Administrator login page:
-    https://careertrack.vercel.app/admin/login
+    https://careertrack-drab.vercel.app/admin/login
+
+GitHub repository:
+    https://github.com/gaurav9829/CareerTrack
 
 Deployed demo admin credentials: shared privately with the evaluator
 (NEVER store them in this repository).
+
+Notes:
+- Backend runs on Render's free tier: it sleeps after ~15 minutes of
+  inactivity; the first request afterwards takes about a minute to wake it
+  (opening the health-check URL once before evaluation avoids this).
+- Uploaded résumés are stored on Render's ephemeral free-tier disk and can
+  disappear on redeploy/restart (documented limitation in README/report).
