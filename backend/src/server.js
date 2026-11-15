@@ -20,6 +20,22 @@ const app = require('./app');
   try {
     await connectDB();
     console.log('[startup] MongoDB connected');
+
+    // Optional demo bootstrap for fresh deployments (Render free tier has no
+    // shell, so `npm run seed:*` cannot be run there). When AUTO_SEED_DEMO=true
+    // and the database has no admin yet, seed the demo admin + fictional jobs
+    // on boot. Idempotent: it only acts when the admin is missing / jobs empty.
+    if (process.env.AUTO_SEED_DEMO === 'true') {
+      const adminCount = await require('./models/Admin').countDocuments({});
+      if (adminCount === 0) {
+        const { ensureDemoAdmin } = require('./seed/seedAdmin');
+        await ensureDemoAdmin();
+        const { seedJobs } = require('./seed/seedJobs');
+        await seedJobs();
+        console.log('[startup] Demo data seeded (AUTO_SEED_DEMO=true, empty database)');
+      }
+    }
+
     const server = app.listen(env.PORT, () => {
       console.log(`[startup] CareerTrack API listening on http://localhost:${env.PORT}`);
     });

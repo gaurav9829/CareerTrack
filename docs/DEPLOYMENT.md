@@ -41,6 +41,7 @@ git push -u origin main
 | MAX_RESUME_MB | `4` |
 | UPLOAD_DIR | `uploads/resumes` |
 | ADMIN_NAME / ADMIN_EMAIL / ADMIN_PASSWORD | your private admin credentials (never commit these) |
+| AUTO_SEED_DEMO | `true` (optional) — on boot, if no admin exists, seed demo admin + 12 fictional jobs (no shell needed on the free tier) |
 
 4. After the first deploy, run the seeds once (Render Shell or locally against Atlas):
    ```bash

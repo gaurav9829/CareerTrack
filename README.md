@@ -42,7 +42,7 @@ All demo data (companies, jobs, candidates) is **fictional**.
 | Uploads | multer (local disk storage, magic-byte validation) |
 | Security | helmet, CORS whitelist, express-rate-limit, express-mongo-sanitize |
 | CSV | json2csv |
-| Testing | Jest + Supertest + mongodb-memory-server (76 automated tests) |
+| Testing | Jest + Supertest + mongodb-memory-server (81 automated tests) |
 | Hosting | Frontend: Vercel · Backend: Render (persistent disk for uploads) |
 
 ---
@@ -111,6 +111,11 @@ npm run seed:admin        # creates the admin from ADMIN_* env vars
 npm run seed:jobs         # inserts 12 fictional jobs (active/expired/draft/closed mix)
 ```
 
+> On hosts without shell access (Render free tier), set `AUTO_SEED_DEMO=true` on the
+> service instead: on boot, if the database has no admin yet, the API seeds the demo
+> admin + jobs itself (idempotent — see tests TC-S01..TC-S04). Leave it unset in
+> everyday dev to keep boot explicit.
+
 ### 3. Frontend
 
 ```bash
@@ -131,7 +136,7 @@ npm run dev               # http://localhost:5173, proxies /api to :5000
 
 ```bash
 cd backend
-npm test                  # 76 tests; first run downloads a throwaway in-memory MongoDB
+npm test                  # 81 tests; first run downloads a throwaway in-memory MongoDB
 ```
 
 ---
@@ -148,7 +153,7 @@ See **[docs/Database_Schema.md](docs/Database_Schema.md)** — collections, fiel
 
 ## Testing
 
-See **[docs/Test_Cases.xlsx](docs/Test_Cases.xlsx)** — test case IDs mapped to the automated Jest suite (76 passing) plus the manual frontend checklist.
+See **[docs/Test_Cases.xlsx](docs/Test_Cases.xlsx)** — test case IDs mapped to the automated Jest suite (81 passing) plus the manual frontend checklist.
 
 ## Deployment
 

@@ -94,6 +94,6 @@ Failure handling: any failure after the file was saved (validation, duplicate 40
 
 ## 7. Verification Performed (evidence)
 
-- `npm test` (backend): **76/76 passing** across 6 suites (jobs, apply, auth, authorization, admin jobs, admin applications).
+- `npm test` (backend): **81/81 passing** across 7 suites (jobs, apply, auth, authorization, admin jobs, admin applications, demo-seed bootstrap).
 - `npm run build` (frontend): Vite production build succeeds (124 modules).
 - Live full-stack check: in-memory MongoDB + seeded admin/12 jobs + API server + Vite dev server; verified health, public list (8 active of 9 published + 1 expired), login → cookie → me → stats → admin list, apply with real PDF → 201, duplicate → 409, status update → Shortlisted, note with author, CSV export headers, résumé download byte-exact, 401 without cookie.

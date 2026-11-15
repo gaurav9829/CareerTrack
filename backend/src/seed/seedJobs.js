@@ -226,10 +226,15 @@ async function seedJobs() {
     closed: await Job.countDocuments({ status: 'closed' }),
   };
   console.log(`[seed] Inserted ${docs.length} fake jobs:`, counts);
-  await disconnectDB();
 }
 
-seedJobs().catch((err) => {
-  console.error('[seed] Failed:', err.message);
-  process.exit(1);
-});
+module.exports = { seedJobs, fakeJobs };
+
+if (require.main === module) {
+  seedJobs()
+    .then(() => disconnectDB())
+    .catch((err) => {
+      console.error('[seed] Failed:', err.message);
+      process.exit(1);
+    });
+}
