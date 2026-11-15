@@ -17,12 +17,13 @@ try {
   ExcelJS = require(path.resolve(process.cwd(), 'node_modules', 'exceljs'));
 }
 
-// --- Automated rows (mirrors backend/tests/*; all 76 PASS as of the latest run) ---
+// --- Automated rows (mirrors backend/tests/*; all 81 PASS as of the latest run) ---
 const AUTOMATED = [
   // jobs.test.js
   ['TC-J11', 'Public Jobs', 'Health check endpoint', 'GET /api/health', '200 with status "ok"', 'Passed (Jest)', 'Pass'],
   ['TC-J01', 'Public Jobs', 'List shows only active jobs', '1 expired + 1 draft + 1 closed + 2 active jobs seeded', 'Only active jobs returned; drafts/closed/expired excluded', 'Passed (Jest)', 'Pass'],
   ['TC-J02', 'Public Jobs', 'Search q matches title/company/location case-insensitively', '?q=node, ?q=novaworks, ?q=bengaluru', 'Correct matches returned', 'Passed (Jest)', 'Pass'],
+  ['TC-J02b', 'Public Jobs', 'Search never leaks expired jobs (regression: search $or must not overwrite the active-filter deadline $or)', '?q=expired and ?q=oldcorp on an expired job titled "Expired Job" (OldCorp)', '200 but 0 results; expired job excluded from search results', 'Passed (Jest)', 'Pass'],
   ['TC-J03', 'Public Jobs', 'Filter by employment type and experience level', '?type=Internship, ?level=Lead', 'Only matching jobs returned', 'Passed (Jest)', 'Pass'],
   ['TC-J04', 'Public Jobs', 'Sorting newest/oldest/deadline', '?sort=deadline on jobs with +1d, +5d, null deadlines', 'Soonest deadline first; no-deadline job LAST', 'Passed (Jest)', 'Pass'],
   ['TC-J05', 'Public Jobs', 'Pagination slice + meta', '5 jobs, ?page=2&limit=2', '2 items; pagination {page:2,total:5,totalPages:3}', 'Passed (Jest)', 'Pass'],
@@ -91,6 +92,12 @@ const AUTOMATED = [
   ['TC-AA10', 'Admin Applications', 'CSV formula injection neutralized', 'candidate name "=Evil Formula"', 'Cell prefixed with apostrophe in CSV', 'Passed (Jest)', 'Pass'],
   ['TC-AA11', 'Admin Applications', 'Résumé download (protected)', 'GET résumé route with admin cookie', '200; exact original bytes; Content-Disposition', 'Passed (Jest)', 'Pass'],
   ['TC-AA12', 'Admin Applications', 'Delete application removes résumé file', 'DELETE application', '200; DB record and disk file both gone', 'Passed (Jest)', 'Pass'],
+
+  // seed.test.js (AUTO_SEED_DEMO bootstrap for hosts without shell access)
+  ['TC-S01', 'Demo Seed', 'ensureDemoAdmin creates the admin from env credentials', 'empty admins collection + ADMIN_* env vars', 'Admin created; passwordHash is bcrypt (not plaintext)', 'Passed (Jest)', 'Pass'],
+  ['TC-S02', 'Demo Seed', 'ensureDemoAdmin is idempotent', 'run twice with same env', 'Admin updated in place; count stays 1 (never duplicates)', 'Passed (Jest)', 'Pass'],
+  ['TC-S03', 'Demo Seed', 'seedJobs inserts 12 fictional jobs owned by the admin', 'empty jobs collection + existing admin', '12 jobs; published ones have publishedAt; drafts/closed have none', 'Passed (Jest)', 'Pass'],
+  ['TC-S04', 'Demo Seed', 'Public list only serves active jobs after seeding', 'GET /api/jobs after seedJobs (9 published, 1 expired)', 'pagination.total = 8; expired job excluded', 'Passed (Jest)', 'Pass'],
 ];
 
 // --- Manual frontend checklist (student fills Actual/Status after trying) ---
