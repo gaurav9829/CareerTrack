@@ -1,16 +1,20 @@
-CareerTrack — Deployment Links
+CareerTrack – Deployment Links
 ===============================
 
-Fill these in after deploying (see docs/DEPLOYMENT.md):
-
-Frontend (Vercel):
-    https://<your-app>.vercel.app
+Frontend (Vercel) – LIVE:
+    https://careertrack.vercel.app
 
 Backend (Render):
-    https://<your-backend>.onrender.com
+    [pending – create Web Service, then paste URL here]
 
-Health check:
-    https://<your-backend>.onrender.com/api/health
+Backend health check:
+    [pending] /api/health
+
+Frontend repository:
+    https://github.com/gaurav9829/CareerTrack
+
+Administrator login page:
+    https://careertrack.vercel.app/admin/login
 
 Deployed demo admin credentials: shared privately with the evaluator
 (NEVER store them in this repository).
