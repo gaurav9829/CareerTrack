@@ -305,7 +305,7 @@ export default function ApplyForm() {
               accept=".pdf,.docx"
               onChange={onFileChange}
               aria-invalid={Boolean(errors.resume || fileError)}
-              className={`block w-full cursor-pointer rounded-lg border px-3 py-2 text-sm text-slate-600 file:mr-3 file:rounded-md file:border-0 file:bg-primary-50 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary-700 hover:file:bg-primary-100 ${
+              className={`block w-full cursor-pointer rounded-md border px-3 py-2 text-sm text-slate-600 file:mr-3 file:rounded-md file:border-0 file:bg-primary-50 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-primary-700 hover:file:bg-primary-100 ${
                 errors.resume || fileError ? 'border-red-400' : 'border-slate-300'
               }`}
             />

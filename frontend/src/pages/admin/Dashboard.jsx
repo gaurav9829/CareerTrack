@@ -44,7 +44,7 @@ export default function Dashboard() {
         <h1 className="text-xl font-bold text-slate-900">Dashboard</h1>
         <Link
           to="/admin/jobs/new"
-          className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
+          className="rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
         >
           + Post a job
         </Link>

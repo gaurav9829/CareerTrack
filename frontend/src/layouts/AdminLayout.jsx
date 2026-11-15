@@ -11,8 +11,8 @@ export default function AdminLayout() {
   const navigate = useNavigate()
 
   const linkClass = ({ isActive }) =>
-    `block rounded-lg px-3 py-2 text-sm font-medium ${
-      isActive ? 'bg-primary-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+    `block rounded-md px-3 py-2 text-sm font-medium ${
+      isActive ? 'bg-blue-50 text-primary-700' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800'
     }`
 
   async function onLogout() {
@@ -28,20 +28,20 @@ export default function AdminLayout() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-100 lg:flex-row">
       <ScrollToTop />
-      {/* Sidebar */}
-      <aside className="bg-slate-900 lg:w-60 lg:shrink-0">
+      {/* Sidebar - plain white like the rest of the app */}
+      <aside className="border-b border-slate-200 bg-white lg:border-b-0 lg:border-r lg:w-60 lg:shrink-0">
         <div className="flex items-center justify-between px-4 py-4 lg:block">
           <Link to="/admin" className="flex items-center gap-2">
             <img src="/favicon.svg" alt="" width="26" height="26" />
-            <span className="text-base font-bold text-white">CareerTrack</span>
-            <span className="rounded bg-slate-700 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-slate-300">
+            <span className="text-base font-bold text-slate-800">CareerTrack</span>
+            <span className="rounded bg-primary-600 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white">
               Admin
             </span>
           </Link>
           <button
             type="button"
             onClick={onLogout}
-            className="rounded-lg border border-slate-700 px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-slate-800 lg:hidden"
+            className="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 lg:hidden"
           >
             Logout
           </button>
@@ -57,7 +57,7 @@ export default function AdminLayout() {
           <NavLink to="/admin/applications" className={linkClass}>
             Applications
           </NavLink>
-          <Link to="/" className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white">
+          <Link to="/" className="block rounded-md px-3 py-2 text-sm font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-700">
             ↗ View public site
           </Link>
         </nav>

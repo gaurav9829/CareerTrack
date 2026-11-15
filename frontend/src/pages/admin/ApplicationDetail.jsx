@@ -164,7 +164,7 @@ export default function ApplicationDetail() {
               <p className="mt-3 text-xs font-medium uppercase tracking-wide text-slate-400">Skills</p>
               <div className="mt-1 flex flex-wrap gap-1.5">
                 {app.skills.map((s) => (
-                  <span key={s} className="rounded-full border border-slate-200 px-2.5 py-0.5 text-xs text-slate-600">
+                  <span key={s} className="rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs text-slate-600">
                     {s}
                   </span>
                 ))}

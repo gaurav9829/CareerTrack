@@ -76,10 +76,10 @@ export default function JobDetail() {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700">
+            <span className="inline-flex items-center rounded border border-primary-200 bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-700">
               {job.employmentType}
             </span>
-            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+            <span className="inline-flex items-center rounded border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600">
               {job.experienceLevel}
             </span>
           </div>
@@ -118,7 +118,7 @@ export default function JobDetail() {
               {job.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600"
+                  className="rounded border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600"
                 >
                   {skill}
                 </span>

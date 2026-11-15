@@ -6,17 +6,17 @@ export default {
   theme: {
     extend: {
       // Small, consistent palette: primary for actions, slate for text/surfaces.
+      // Plain blue - a simple, student-chosen accent color.
       colors: {
-        primary: colors.indigo,
+        primary: colors.blue,
       },
       fontFamily: {
         sans: [
-          'Inter',
-          'ui-sans-serif',
+          'Segoe UI',
           'system-ui',
           '-apple-system',
-          'Segoe UI',
           'Roboto',
+          'Arial',
           'sans-serif',
         ],
       },

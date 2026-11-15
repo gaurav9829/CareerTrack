@@ -192,7 +192,7 @@ export default function JobsManage() {
                       </p>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`inline-flex rounded-full border px-2.5 py-0.5 text-xs font-medium ${STATUS_BADGES[job.status]}`}>
+                      <span className={`inline-flex rounded border px-2 py-0.5 text-xs font-medium ${STATUS_BADGES[job.status]}`}>
                         {job.status}
                       </span>
                     </td>
@@ -238,7 +238,7 @@ export default function JobsManage() {
                     <p className="font-medium text-slate-800">{job.title}</p>
                     <p className="text-xs text-slate-500">{job.company} · {job.location}</p>
                   </div>
-                  <span className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-medium ${STATUS_BADGES[job.status]}`}>
+                  <span className={`inline-flex rounded border px-2 py-0.5 text-xs font-medium ${STATUS_BADGES[job.status]}`}>
                     {job.status}
                   </span>
                 </div>

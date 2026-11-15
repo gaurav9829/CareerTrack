@@ -7,7 +7,7 @@ export default function PublicLayout() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const navClass = ({ isActive }) =>
-    `rounded-lg px-3 py-2 text-sm font-medium ${
+    `rounded-md px-3 py-2 text-sm font-medium ${
       isActive ? 'bg-primary-50 text-primary-700' : 'text-slate-600 hover:bg-slate-100'
     }`
 

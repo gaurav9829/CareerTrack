@@ -24,7 +24,7 @@ export default function Modal({ open, onClose, title, children, width = 'max-w-l
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className={`relative w-full ${width} rounded-xl border border-slate-200 bg-white shadow-xl`}
+        className={`relative w-full ${width} rounded-md border border-slate-200 bg-white shadow-xl`}
       >
         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3">
           <h2 className="text-base font-semibold text-slate-800">{title}</h2>
@@ -62,7 +62,7 @@ export function ConfirmModal({
           type="button"
           onClick={onClose}
           disabled={busy}
-          className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+          className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
         >
           Cancel
         </button>
@@ -70,7 +70,7 @@ export function ConfirmModal({
           type="button"
           onClick={onConfirm}
           disabled={busy}
-          className={`rounded-lg px-4 py-2 text-sm font-medium text-white disabled:opacity-50 ${
+          className={`rounded-md px-4 py-2 text-sm font-medium text-white disabled:opacity-50 ${
             danger ? 'bg-red-600 hover:bg-red-700' : 'bg-primary-600 hover:bg-primary-700'
           }`}
         >

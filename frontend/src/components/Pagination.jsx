@@ -15,7 +15,7 @@ export default function Pagination({ page, totalPages, onChange }) {
         type="button"
         disabled={page <= 1}
         onClick={() => onChange(page - 1)}
-        className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"
+        className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"
       >
         Prev
       </button>
@@ -26,7 +26,7 @@ export default function Pagination({ page, totalPages, onChange }) {
           type="button"
           aria-current={p === page ? 'page' : undefined}
           onClick={() => onChange(p)}
-          className={`min-w-9 rounded-lg border px-3 py-1.5 text-sm ${
+          className={`min-w-9 rounded-md border px-3 py-1.5 text-sm ${
             p === page
               ? 'border-primary-600 bg-primary-600 text-white'
               : 'border-slate-300 text-slate-600 hover:bg-slate-50'
@@ -40,7 +40,7 @@ export default function Pagination({ page, totalPages, onChange }) {
         type="button"
         disabled={page >= totalPages}
         onClick={() => onChange(page + 1)}
-        className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"
+        className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-40"
       >
         Next
       </button>

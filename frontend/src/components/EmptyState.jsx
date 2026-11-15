@@ -1,7 +1,7 @@
 // Friendly empty state with an optional call-to-action.
 export default function EmptyState({ title = 'Nothing here yet', message, action }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
+    <div className="flex flex-col items-center justify-center rounded-md border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
       <svg
         aria-hidden="true"
         className="mb-4 h-12 w-12 text-slate-300"

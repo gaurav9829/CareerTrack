@@ -4,7 +4,7 @@ import { formatDate, formatSalary } from '../utils/format'
 // One job row on the public listing.
 export default function JobCard({ job }) {
   return (
-    <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-primary-300 hover:shadow-md">
+    <article className="rounded-md border border-slate-200 bg-white p-5 shadow-sm transition hover:border-primary-300 hover:shadow-md">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-semibold text-slate-800">
@@ -17,10 +17,10 @@ export default function JobCard({ job }) {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <span className="inline-flex items-center rounded-full bg-primary-50 px-2.5 py-0.5 text-xs font-medium text-primary-700">
+          <span className="inline-flex items-center rounded border border-primary-200 bg-primary-50 px-2 py-0.5 text-xs font-medium text-primary-700">
             {job.employmentType}
           </span>
-          <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600">
+          <span className="inline-flex items-center rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-600">
             {job.experienceLevel}
           </span>
         </div>
@@ -36,7 +36,7 @@ export default function JobCard({ job }) {
         </span>
         <Link
           to={`/jobs/${job._id}`}
-          className="rounded-lg bg-primary-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-primary-700"
+          className="rounded-md bg-primary-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-primary-700"
         >
           View &amp; Apply
         </Link>
