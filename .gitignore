@@ -27,3 +27,12 @@ Thumbs.db
 # Legacy pre-project scaffolds (left on disk, outside the repo)
 client/
 server/
+
+# Course material & working docs that are NOT part of the project repo
+Minor & Major Project Guidelines*.pdf
+AGENTS.md
+TaskFlow*/
+
+# Local working files (drafts, scripts) that never belong in the repo
+*.draft.md
+scripts-local/
