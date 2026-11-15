@@ -1,0 +1,36 @@
+# Render Blueprint - deploys the backend as a Node web service.
+# Usage: Render dashboard -> New -> Blueprint -> point at this repo.
+# Secrets marked `sync: false` are filled in the Render dashboard (never committed).
+services:
+  - type: web
+    name: careertrack-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      - key: COOKIE_NAME
+        value: careertrack_token
+      - key: COOKIE_SAMESITE
+        value: lax
+      - key: MAX_RESUME_MB
+        value: 4
+      - key: UPLOAD_DIR
+        value: uploads/resumes
+      - key: MONGO_URI
+        sync: false
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: ADMIN_NAME
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
