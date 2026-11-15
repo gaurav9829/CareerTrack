@@ -146,4 +146,24 @@ describe('GET /api/admin/jobs + stats', () => {
     expect(res.status).toBe(200);
     expect(res.body.data.applicationCount).toBe(0);
   });
+
+  test('TC-AJ12: blank salary accepted - UI posts empty strings for undislosed pay (regression)', async () => {
+    // Case 1: salary object absent entirely.
+    const withoutSalary = await admin.post('/api/admin/jobs').send({
+      title: 'No Salary Job', company: 'AdminCorp', location: 'Remote',
+      description: 'Pay not disclosed for this role.',
+    });
+    expect(withoutSalary.status).toBe(201);
+    expect(withoutSalary.body.data.salary.min).toBeNull();
+
+    // Case 2: the exact shape the React form sends for blank salary inputs.
+    const blankStrings = await admin.post('/api/admin/jobs').send({
+      title: 'Blank Salary Job', company: 'AdminCorp', location: 'Remote',
+      description: 'Pay not disclosed for this role.',
+      salary: { min: '', max: '' },
+    });
+    expect(blankStrings.status).toBe(201);
+    expect(blankStrings.body.data.salary.min).toBeNull();
+    expect(blankStrings.body.data.salary.max).toBeNull();
+  });
 });

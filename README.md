@@ -42,7 +42,7 @@ All demo data (companies, jobs, candidates) is **fictional**.
 | Uploads | multer (local disk storage, magic-byte validation) |
 | Security | helmet, CORS whitelist, express-rate-limit, express-mongo-sanitize |
 | CSV | json2csv |
-| Testing | Jest + Supertest + mongodb-memory-server (81 automated tests) |
+| Testing | Jest + Supertest + mongodb-memory-server (82 automated tests) |
 | Hosting | Frontend: Vercel · Backend: Render (persistent disk for uploads) |
 
 ---
@@ -136,7 +136,7 @@ npm run dev               # http://localhost:5173, proxies /api to :5000
 
 ```bash
 cd backend
-npm test                  # 81 tests; first run downloads a throwaway in-memory MongoDB
+npm test                  # 82 tests; first run downloads a throwaway in-memory MongoDB
 ```
 
 ---
@@ -153,7 +153,7 @@ See **[docs/Database_Schema.md](docs/Database_Schema.md)** — collections, fiel
 
 ## Testing
 
-See **[docs/Test_Cases.xlsx](docs/Test_Cases.xlsx)** — test case IDs mapped to the automated Jest suite (81 passing) plus the manual frontend checklist.
+See **[docs/Test_Cases.xlsx](docs/Test_Cases.xlsx)** — test case IDs mapped to the automated Jest suite (82 passing) plus the manual frontend checklist.
 
 ## Deployment
 

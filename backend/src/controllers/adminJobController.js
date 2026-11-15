@@ -39,9 +39,12 @@ function buildJobPayload(body, existing = null) {
     updates.deadline = body.deadline ? new Date(body.deadline) : null;
   }
   if (body.salary !== undefined && body.salary && typeof body.salary === 'object') {
+    // The UI posts "" for blank salary inputs; normalize those to null so the
+    // schema stores "salary not disclosed" instead of an invalid empty string.
+    const toNumOrNull = (v) => (v === '' || v == null ? null : Number(v));
     updates.salary = {
-      min: body.salary.min ?? null,
-      max: body.salary.max ?? null,
+      min: toNumOrNull(body.salary.min),
+      max: toNumOrNull(body.salary.max),
       currency: String(body.salary.currency || existing?.salary?.currency || 'INR'),
     };
   }

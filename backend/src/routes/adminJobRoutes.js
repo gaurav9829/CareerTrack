@@ -32,14 +32,17 @@ const jobRules = [
   body('description').trim().notEmpty().withMessage('Description is required.').isLength({ max: 10000 }),
   body('employmentType').optional({ values: 'falsy' }).isIn(EMPLOYMENT_TYPES),
   body('experienceLevel').optional({ values: 'falsy' }).isIn(EXPERIENCE_LEVELS),
-  body('salary.min').optional({ values: null }).isFloat({ min: 0 }).withMessage('Salary min must be a positive number.'),
+  body('salary.min')
+    .optional({ values: 'falsy' }) // UI sends "" for blank salary inputs
+    .isFloat({ min: 0 })
+    .withMessage('Salary min must be a positive number.'),
   body('salary.max')
-    .optional({ values: null })
+    .optional({ values: 'falsy' })
     .isFloat({ min: 0 })
     .withMessage('Salary max must be a positive number.')
     .custom((max, { req }) => {
       const min = req.body?.salary?.min;
-      if (max == null || min == null) return true;
+      if (max == null || max === '' || min == null || min === '') return true;
       return Number(min) <= Number(max);
     })
     .withMessage('Salary max must be greater than or equal to min.'),

@@ -17,7 +17,7 @@ try {
   ExcelJS = require(path.resolve(process.cwd(), 'node_modules', 'exceljs'));
 }
 
-// --- Automated rows (mirrors backend/tests/*; all 81 PASS as of the latest run) ---
+// --- Automated rows (mirrors backend/tests/*; all 82 PASS as of the latest run) ---
 const AUTOMATED = [
   // jobs.test.js
   ['TC-J11', 'Public Jobs', 'Health check endpoint', 'GET /api/health', '200 with status "ok"', 'Passed (Jest)', 'Pass'],
@@ -78,6 +78,7 @@ const AUTOMATED = [
   ['TC-AJ09', 'Admin Jobs', 'Admin list shows all statuses + status filter', 'GET /api/admin/jobs?status=draft', 'All rows match filter', 'Passed (Jest)', 'Pass'],
   ['TC-AJ10', 'Admin Jobs', 'Dashboard stats counters', 'GET /api/admin/stats', 'totalJobs/activeJobs/totalApplications/applicationsByStatus present', 'Passed (Jest)', 'Pass'],
   ['TC-AJ11', 'Admin Jobs', 'Job detail includes applicationCount', 'GET /api/admin/jobs/:id', '200; applicationCount returned', 'Passed (Jest)', 'Pass'],
+  ['TC-AJ12', 'Admin Jobs', 'Blank salary accepted (UI regression: form posts empty strings for undisclosed pay)', 'create without salary; create with salary {min:"",max:""}', '201; salary.min/max stored as null, not rejected with 400', 'Passed (Jest)', 'Pass'],
 
   // adminApplications.test.js
   ['TC-AA01', 'Admin Applications', 'List with populated job info', 'GET /api/admin/applications', '200; rows include job.title', 'Passed (Jest)', 'Pass'],
