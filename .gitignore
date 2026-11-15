@@ -36,3 +36,6 @@ TaskFlow*/
 # Local working files (drafts, scripts) that never belong in the repo
 *.draft.md
 scripts-local/
+
+# Submission material (course process, not project code)
+Submission_Email.txt
