@@ -152,7 +152,7 @@ export default function JobForm() {
   return (
     <div className="mx-auto max-w-3xl">
       <Link to="/admin/jobs" className="text-sm font-medium text-primary-700 hover:underline">
-        ← Back to jobs
+        Back to jobs
       </Link>
 
       <Card className="mt-4 p-6">

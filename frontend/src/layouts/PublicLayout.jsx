@@ -17,8 +17,9 @@ export default function PublicLayout() {
       <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/favicon.svg" alt="" width="28" height="28" />
-            <span className="text-lg font-bold text-slate-800">CareerTrack</span>
+            <span className="font-serif text-xl font-bold tracking-tight text-slate-900">
+              Career<span className="text-primary-600">Track</span>
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-1 sm:flex" aria-label="Main navigation">

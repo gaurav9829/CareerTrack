@@ -42,8 +42,10 @@ export default function Login() {
     <div className="flex min-h-screen items-center justify-center bg-slate-100 px-4">
       <Card className="w-full max-w-md p-8">
         <div className="mb-6 text-center">
-          <img src="/favicon.svg" alt="" width="40" height="40" className="mx-auto" />
-          <h1 className="mt-3 text-xl font-bold text-slate-900">Admin sign in</h1>
+          <h1 className="font-serif text-xl font-bold tracking-tight text-slate-900">
+            Career<span className="text-primary-600">Track</span>
+          </h1>
+          <p className="mt-3 text-sm font-medium text-slate-800">Admin sign in</p>
           <p className="mt-1 text-sm text-slate-500">CareerTrack recruitment console</p>
         </div>
 

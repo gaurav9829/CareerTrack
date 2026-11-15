@@ -78,7 +78,7 @@ export default function ApplicationDetail() {
   return (
     <div className="mx-auto max-w-4xl">
       <Link to="/admin/applications" className="text-sm font-medium text-primary-700 hover:underline">
-        ← Back to applications
+        Back to applications
       </Link>
 
       <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
@@ -127,7 +127,7 @@ export default function ApplicationDetail() {
               variant="secondary"
               onClick={() => window.open(resumeUrl(app._id), '_blank', 'noopener')}
             >
-              ⬇ Download résumé
+              Download résumé
             </Button>
             {app.resume?.originalName && (
               <p className="mt-2 text-xs text-slate-400">

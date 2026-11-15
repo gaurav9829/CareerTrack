@@ -32,8 +32,9 @@ export default function AdminLayout() {
       <aside className="border-b border-slate-200 bg-white lg:border-b-0 lg:border-r lg:w-60 lg:shrink-0">
         <div className="flex items-center justify-between px-4 py-4 lg:block">
           <Link to="/admin" className="flex items-center gap-2">
-            <img src="/favicon.svg" alt="" width="26" height="26" />
-            <span className="text-base font-bold text-slate-800">CareerTrack</span>
+            <span className="font-serif text-lg font-bold tracking-tight text-slate-900">
+              Career<span className="text-primary-600">Track</span>
+            </span>
             <span className="rounded bg-primary-600 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-white">
               Admin
             </span>
@@ -58,7 +59,7 @@ export default function AdminLayout() {
             Applications
           </NavLink>
           <Link to="/" className="block rounded-md px-3 py-2 text-sm font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-700">
-            ↗ View public site
+            View public site
           </Link>
         </nav>
       </aside>

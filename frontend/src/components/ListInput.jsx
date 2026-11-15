@@ -25,7 +25,7 @@ export default function ListInput({ label, idPrefix, values, onChange, placehold
               onClick={() => onChange(values.filter((_, i) => i !== index))}
               className="shrink-0 rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-500 hover:bg-slate-50 disabled:opacity-40"
             >
-              ✕
+              Remove
             </button>
           </div>
         ))}

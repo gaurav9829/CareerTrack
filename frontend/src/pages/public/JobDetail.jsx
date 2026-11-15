@@ -39,7 +39,7 @@ export default function JobDetail() {
         />
         <div className="mt-6 text-center">
           <Link to="/" className="text-sm font-medium text-primary-700 hover:underline">
-            ← Browse all jobs
+            Back to all jobs
           </Link>
         </div>
       </div>
@@ -64,7 +64,7 @@ export default function JobDetail() {
   return (
     <div className="mx-auto max-w-3xl">
       <Link to="/" className="text-sm font-medium text-primary-700 hover:underline">
-        ← Back to jobs
+        Back to jobs
       </Link>
 
       <Card className="mt-4 p-6">
@@ -138,7 +138,7 @@ export default function JobDetail() {
             to={`/jobs/${job._id}/apply`}
             className="inline-flex w-full items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-700 sm:w-auto"
           >
-            Apply for this job →
+            Apply for this job
           </Link>
           <p className="mt-2 text-xs text-slate-500">
             You will need your résumé as PDF or DOCX (max 4 MB). No account required.

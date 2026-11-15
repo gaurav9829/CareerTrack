@@ -134,7 +134,7 @@ export default function ApplyForm() {
         />
         <div className="mt-6 text-center">
           <Link to="/" className="text-sm font-medium text-primary-700 hover:underline">
-            ← Browse all jobs
+            Back to all jobs
           </Link>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default function ApplyForm() {
   return (
     <div className="mx-auto max-w-2xl">
       <Link to={`/jobs/${id}`} className="text-sm font-medium text-primary-700 hover:underline">
-        ← Back to job
+        Back to job
       </Link>
 
       <Card className="mt-4 p-6">
@@ -268,7 +268,7 @@ export default function ApplyForm() {
                     onClick={() => setEducation((rows) => rows.filter((_, i) => i !== index))}
                     className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-500 hover:bg-slate-50 disabled:opacity-40"
                   >
-                    ✕
+                    Remove
                   </button>
                 </div>
               ))}
