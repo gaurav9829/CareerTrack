@@ -166,7 +166,7 @@ See **[docs/Test_Cases.xlsx](docs/Test_Cases.xlsx)** — test case IDs mapped to
 
 ## Screenshots
 
-The report's screenshots are captured into [`screenshots/`](screenshots/) (see the README there for the required list).
+Genuine captures from the running app are already in [`screenshots/`](screenshots/) — see the README there for what each file shows. [`Project_Report.pdf`](Project_Report.pdf) embeds them in section 16.
 
 ---
 

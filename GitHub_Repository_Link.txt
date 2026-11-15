@@ -1,10 +1,8 @@
-CareerTrack — Repository Link
+CareerTrack – Repository Link
 ================================
 
-GitHub repository URL (paste after creating the repo and pushing):
+GitHub repository (public):
 
-    https://github.com/<your-username>/careertrack.git
+    https://github.com/gaurav9829/CareerTrack
 
-Quick push:
-    git remote add origin https://github.com/<your-username>/careertrack.git
-    git push -u origin main
+Deployment links: see Deployment_Links.txt (filled in after deploying).
